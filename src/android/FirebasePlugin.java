@@ -483,9 +483,10 @@ public class FirebasePlugin extends CordovaPlugin {
             public void run() {
                 try {
                     Crashlytics.logException(new Exception(message));
+                    Log.e(TAG, message);
                     callbackContext.success(1);
                 } catch (Exception e) {
-                    Crashlytics.log(e.getMessage());
+                    Crashlytics.log(1, TAG, e.getMessage());
                     e.printStackTrace();
                     callbackContext.error(e.getMessage());
                 }
