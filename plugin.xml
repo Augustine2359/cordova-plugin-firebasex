@@ -6,6 +6,9 @@
 
 	<license>MIT</license>
 
+    <preference name="FABRIC_API_KEY" />
+    <preference name="FABRIC_API_SECRET" />
+
 	<dependency id="cordova-plugin-cocoapod-supportx" version="^1.6.1" />
 
 	<engines>
