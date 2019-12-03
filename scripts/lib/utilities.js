@@ -108,14 +108,14 @@ module.exports = {
     getPluginConfig: function(platform) {
 
       var platformConfigPath = path.join("..", "..", "..", platform + ".json");
-
+      console.log(platformConfigPath);
       var platformConfig = require(platformConfigPath);
 
       var pluginId = this.getPluginId();
 
       var apiKey = platformConfig.installed_plugins[pluginId].FABRIC_API_KEY;
       var apiSecret = platformConfig.installed_plugins[pluginId].FABRIC_API_SECRET;
-
+      console.log(platformConfig.installed_plugins);
       var config = {
           apiKey: apiKey,
           apiSecret: apiSecret
