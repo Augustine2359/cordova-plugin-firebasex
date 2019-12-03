@@ -40,6 +40,7 @@ module.exports = {
     for (var i = 0; i < platform.src.length; i++) {
       var file = platform.src[i];
       if (this.fileExists(file)) {
+        console.log('FILE EXISTS');
         try {
           var contents = fs.readFileSync(file).toString();
 
@@ -50,13 +51,18 @@ module.exports = {
               fs.writeFileSync(destinationPath, contents);
             });
           } catch (e) {
+            console.log('FAILED TO COPY FILE');
             // skip
           }
         } catch (err) {
           console.log(err);
+          console.log('FAILED TO READ FILE');
         }
 
         break;
+      }
+      else {
+        console.log('FILE DOES NOT EXIST');
       }
     }
   },
