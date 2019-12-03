@@ -33,7 +33,7 @@ module.exports = {
      * The ID of the plugin; this should match the ID in plugin.xml.
      */
   getPluginId: function () {
-    return "cordova-plugin-firebase";
+    return "cordova-plugin-firebasex";
   },
 
   copyKey: function (platform) {
@@ -90,5 +90,37 @@ module.exports = {
     } catch (e) {
       return false;
     }
+  },
+
+    /**
+     * Used to get the plugin configuration for the given platform.
+     *
+     * The plugin configuration object will have the API and secret keys
+     * for the Fabric.io service that were specified when the plugin
+     * was installed.
+     *
+     * This configuration is obtained from, where "ios" is the platform name:
+     *    platforms/ios/ios.json
+     *
+     * @param {string} platform - The platform to get plugin configuration for, either "ios" or "android".
+     * @returns {string} The path to the platform's plugin JSON configuration file.
+     */
+    getPluginConfig: function(platform) {
+
+      var platformConfigPath = path.join("..", "..", "..", platform + ".json");
+
+      var platformConfig = require(platformConfigPath);
+
+      var pluginId = this.getPluginId();
+
+      var apiKey = platformConfig.installed_plugins[pluginId].FABRIC_API_KEY;
+      var apiSecret = platformConfig.installed_plugins[pluginId].FABRIC_API_SECRET;
+
+      var config = {
+          apiKey: apiKey,
+          apiSecret: apiSecret
+      };
+
+      return config;
   }
 };
