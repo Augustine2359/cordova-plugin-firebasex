@@ -39,7 +39,7 @@ module.exports = {
     xcodeProject.parseSync();
 
     // Build the body of the script to be executed during the build phase.
-    var script = '"' + '${PODS_ROOT}/Fabric/run ' + pluginConfig.apiKey + " " + pluginConfig.apiSecret + '"';
+    var script = '"' + '${PODS_ROOT}/Fabric/run" ' + pluginConfig.apiKey + " " + pluginConfig.apiSecret;
     console.log(script);
     var otherscript = '"' + '\\"${SRCROOT}\\"' + "/\\\"" + utilities.getAppName(context) + "\\\"/Plugins/cordova-fabric-plugin/Fabric.framework/run " + pluginConfig.apiKey + " " + pluginConfig.apiSecret + '"';
     console.log(otherscript);
